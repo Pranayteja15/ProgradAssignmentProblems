@@ -1,11 +1,11 @@
 import java.util.Scanner;
-import java.lang.String;
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 public class prstring {
 
 	public static void main(String[] args) {
 		
-		int count=0;
+		int count=0,flag=0;
 		List<Character> chars = new ArrayList<>();
 		Scanner sc=new Scanner(System.in);
 		String input=sc.next();
@@ -14,38 +14,38 @@ public class prstring {
             chars.add(ch);
         }
 		 sc.close(); 
-		 for(int i=0;i<chars.size()-2;i++)
+		 for(int i=0;i<chars.size()-1;i++)
 		 {
-			 if(chars.get(i)=='P' && chars.get(i+2)=='P')
+			 if(chars.get(i)=='P' && chars.get(i+1)=='R' || chars.get(i)=='R' && chars.get(i+1)=='P')
 			 {
 				 
 				 count=count+1;
 			 }
-			 else if(chars.get(i)=='R' && chars.get(i+2)=='R')
-			 {
-				 
-				 count=count+1;
-			 }
+		
 			 else
 			 {
-				
+				 flag+=1;
+				System.out.println("imperfect");
 				 break;
 			 }
 		 }
-			if(count%2==0)
+			if(count%2!=0)
 			{
-				if(count==chars.size()/2)
+				if(flag==0)
 				{
 					System.out.println("perfect");
 				}
 			}
 			else
-			{
-				System.out.println("imperfect");
+			{ 
+				if(flag==0)
+				System.out.println("perfect");
+				else
+					System.out.println("imperfect");
+				
 			}
 
 		 }
 	
 	
 	}
-
