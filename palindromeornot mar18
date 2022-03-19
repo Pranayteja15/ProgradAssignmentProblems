@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class palindromeornot {
+	public static boolean checkPalindrome(String string) {
+
+		int first = 0;
+
+		int last = string.length() - 1;
+
+		while (first < last) {
+
+			if (string.charAt(first) != string.charAt(last)) {
+
+				return false;
+
+			}
+
+			first++;
+			last--;
+
+		}
+
+		return true;
+
+	}
+
+	public static int Noofstring(String string) {
+
+		if (checkPalindrome(string)) {
+
+			return 0;
+
+		}
+
+		String substring = string.substring(1);
+
+		return 1 + Noofstring(substring);
+	}
+
+	public static void main(String args[]) {
+
+		Scanner sc = new Scanner(System.in);
+
+		String inputstring = sc.nextLine();
+
+		if (!checkPalindrome(inputstring)) {
+			String stringadd = inputstring.substring(0, Noofstring(inputstring));
+			StringBuilder sbf = new StringBuilder(stringadd);
+			System.out.println(inputstring + sbf.reverse());
+		} else {
+			System.out.println("palindrome");
+		}
+	}
+}
