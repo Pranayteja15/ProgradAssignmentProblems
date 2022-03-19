@@ -1,0 +1,43 @@
+import java.util.Scanner;  
+public class arrayproduct  
+{  
+public static void main(String[] args)   
+{  
+int n,count=0;  
+Scanner sc=new Scanner(System.in);  
+System.out.print("Enter the number of elements you want to store: ");  
+n=sc.nextInt();  
+  int[] array = new int[n];  
+System.out.println("Enter the elements of the array: ");  
+for(int i=0; i<n; i++)  
+{  
+ 
+array[i]=sc.nextInt();  
+}  
+int product=sc.nextInt();
+for (int i=0; i<array.length-1; i++)   
+{  
+	for(int j=i+1;j<array.length;j++)
+	{
+		int c=array[i]*array[j];
+		if(product==c)
+		{
+			count+=1;
+		}
+	}
+	
+ 
+}  
+System.out.println(count);
+}
+}
+
+//3 2 6 1 4
+//6
+//2
+//8 2 4 16 1
+//16
+//2
+//8 2 4 16 1 4
+//16
+//3
