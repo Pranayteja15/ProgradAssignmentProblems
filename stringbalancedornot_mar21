@@ -1,0 +1,71 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class stringbalancedornot {
+
+    public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String input = sc.nextLine();
+		
+		System.out.println(BalancedBrackets(input));
+	}
+
+	private static String BalancedBrackets(String inputString) {
+		Stack<Character> st = new Stack<>();
+		StringBuilder sbinput = new StringBuilder(inputString);
+		
+		for(int i=0; i < sbinput.length(); i++){
+            char ch = sbinput.charAt(i);
+            if(ch == '}' || ch == ')' || ch == ']'){
+            	
+                if(st.isEmpty()) {
+                	sbinput.insert(i, OpenBracket(ch));
+                	st.push(sbinput.charAt(i++));
+                }
+                else if(ch == '}'){
+                    if(st.peek() != '{') {
+                    	sbinput.insert(i++, String.valueOf('{'));
+                    	st.push('{');
+                    }
+                }else if(ch == ')'){
+                    if(st.peek() != '(' ) {
+                    	sbinput.insert(i++, String.valueOf('('));
+                    	st.push('(');
+                    }
+                }else if(ch == ']'){
+                    if(st.peek() != '[' ) {
+                    	sbinput.insert(i++, String.valueOf('['));
+                    	st.push('[');
+                    }
+                }
+                
+                st.pop();
+                
+            }else
+                st.push(ch);
+        }
+		
+		while(!st.isEmpty()) 
+			sbinput.append(CloseBracket(st.pop()));
+		
+        return sbinput.toString();
+	}
+	
+	public static String OpenBracket(char closeBracket) {
+		if(closeBracket == '}')
+			return "{";
+		else if(closeBracket == ')')
+			return "(";
+		else
+			return "[";
+	}
+	
+	public static String CloseBracket(char openBracket) {
+		if(openBracket == '{')
+			return "}";
+		else if(openBracket == '(')
+			return ")";
+		else
+			return "]";
+	}
+}
