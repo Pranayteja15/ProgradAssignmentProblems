@@ -1,0 +1,33 @@
+
+import java.util.Scanner;
+import java.util.regex.*;
+
+class validateip4address {
+
+	public static boolean isValidIPAddress(String ip) {
+
+		String zeroTo255 = "(\\d{1,2}|(0|1)\\" + "d{2}|2[0-4]\\d|25[0-5])";
+		String oneto254 = "(\\d{1,2}[1-9]|(0|1)\\" + "d{2}|2[0-4]\\d|25[0-4])";
+
+		String regex = oneto254 + "\\." + zeroTo255 + "\\." + zeroTo255 + "\\." + oneto254;
+
+		Pattern p = Pattern.compile(regex);
+
+		if (ip == null) {
+			return false;
+		}
+
+		Matcher m = p.matcher(ip);
+
+		return m.matches();
+	}
+
+	public static void main(String args[]) {
+
+		Scanner sc = new Scanner(System.in);
+		String input = sc.next();
+
+		System.out.println("Output: " + isValidIPAddress(input));
+
+	}
+}
