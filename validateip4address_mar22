@@ -31,3 +31,68 @@ class validateip4address {
 
 	}
 }
+
+//Testing different cases
+
+
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+public class validateiptestcases {
+	@Test  
+    public void testFindMax(){  
+		
+        
+        assertEquals(false,validateip4address.isValidIPAddress("0.1.1.0"));  
+        
+    }  
+	@Test  
+    public void testFindMa(){  
+
+        assertEquals(false,validateip4address.isValidIPAddress("1.1.1.0"));  
+          
+    }  
+	@Test  
+    public void testFindM(){  
+
+        assertEquals(false,validateip4address.isValidIPAddress("0.1.1.1"));  
+          
+    }  
+	@Test  
+    public void testFind(){  
+
+        assertEquals(false,validateip4address.isValidIPAddress("1.1.1.0"));  
+          
+    }  
+	@Test  
+    public void testFin(){  
+		
+        
+        assertEquals(false,validateip4address.isValidIPAddress("255.1.1.0"));  
+        
+    }  
+	@Test  
+    public void testFi(){  
+		
+        
+        assertEquals(false,validateip4address.isValidIPAddress("1.1.1.255"));  
+        
+    }  
+	@Test  
+    public void testF(){  
+		
+        
+        assertEquals(false ,validateip4address.isValidIPAddress("255.1.1.0"));  
+        
+    }  
+	@Test  
+    public void test(){  
+		
+        
+        assertEquals(false,validateip4address.isValidIPAddress("0.1.1.255"));  
+        
+    }  
+}  
+
